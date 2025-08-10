@@ -35,7 +35,7 @@ namespace CorporateSolutions.Controllers.api
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<GetProductResponse>>> GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
             var product = await _productRepository.GetProductsAsync();
             var productResponse = new List<GetProductResponse>();
@@ -52,7 +52,7 @@ namespace CorporateSolutions.Controllers.api
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<IActionResult> GetProduct(int id)
         {
             var product = await _productRepository.GetProductAsync(id);
             var productResponse = ProductMapper.ToResponse(product, _vat);
@@ -62,7 +62,7 @@ namespace CorporateSolutions.Controllers.api
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Product>> CreateProduct([FromBody] PostProductRequest input)
+        public async Task<IActionResult> CreateProduct([FromBody] PostProductRequest input)
         {
             var product = ProductMapper.ToProduct(input);
             var id = await _productRepository.CreateProductAsync(product);

@@ -47,7 +47,6 @@ namespace CorporateSolutions
         {
             services.AddScoped<IDbSeeder, UserSeeder>();
             services.AddScoped<IDbSeeder, MessageSeeder>();
-            services.AddScoped<IDbSeeder, ProductSeeder>();
             return services;
         }
 

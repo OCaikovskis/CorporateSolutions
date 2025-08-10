@@ -1,5 +1,4 @@
-﻿using CorporateSolutions.Models;
-using CorporateSolutions.Repositories;
+﻿using CorporateSolutions.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +20,7 @@ namespace CorporateSolutions.Controllers.api
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Audit>>> GetAudit([FromQuery] DateTime? from, [FromQuery] DateTime? to)
+        public async Task<IActionResult> GetAudit([FromQuery] DateTime? from, [FromQuery] DateTime? to)
         {
             return Ok(await _auditRepository.GetAuditAsync(from, to));
         }
